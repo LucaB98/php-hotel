@@ -35,7 +35,7 @@
             'description' => 'Hotel Milano Descrizione',
             'parking' => true,
             'vote' => 2,
-            'distance_to_center' => 50
+            'distance_to_center' => 50 
         ],
 
     ];
@@ -54,6 +54,27 @@
 
 </head>
 <body>
+<div class="container mt-5">
+<h1>Tabella hotel</h1>
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Descrizione</th>
+            <th scope="col">Parking</th>
+            <th scope="col">Vote</th>
+            <th scope="col">Distance to center</th>
+        </tr>
+        <?php foreach($hotels as $key => $hotel) : ?>
+            <tr>
+                <?php foreach($hotel as $value) : ?>
+                  <td>
+                    <?= $value ?>
+                  </td> 
+                <?php endforeach ?>   
+            </tr>
+        <?php endforeach ?>
+    </table>
+</div>
 
 <!-- js bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

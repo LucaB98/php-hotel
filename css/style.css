@@ -1,4 +1,4 @@
-body {
-    height: 100vh;
-    background-image: url(/img/hotel.jpg);
+.main {
+
+    background-image: url('img/hotel.jpg');
 }

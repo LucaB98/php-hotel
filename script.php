@@ -40,6 +40,8 @@
 
     ];
 
+    $headings = array_keys($hotels[0]);
+
 ?>
 
 <!DOCTYPE html>
@@ -53,36 +55,35 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 <!-- font-awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
 <!-- css -->
-<link rel="stylesheet" href="css/style.css" type="text/jpg">
+<link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
 <main class="main">
     <div class="container mt-5">
         <h1 class="my-5">Tabella hotel</h1>
-            <table class="table table-striped">
+        <table class="table table-striped">
                 <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Descrizione</th>
-                    <th scope="col">Parking</th>
-                    <th scope="col">Vote</th>
-                    <th scope="col">Distance to center</th>
+                <?php foreach($headings as $heading) : ?>
+                    <th scope="col"><?= ucfirst($heading) ?></th>
+                <?php endforeach; ?>
                 </tr>
-                <?php foreach($hotels as $key => $hotel) : ?>
+                <?php foreach($hotels as $hotel) : ?>
                     <tr>
-                        <?php foreach($hotel as $value) : ?>
-                        <td>
-                            <?= $value ?>
-                        </td> 
-                        <?php endforeach ?>   
+                       <th scope="col"><?= $hotel['name'] ?></th>
+                       <td><?= $hotel['description'] ?></td>
+                       <td><?= $hotel['parking']? '<i class="fa-solid fa-circle-check text-success"></i>' : '<i class="fa-solid fa-circle-xmark text-danger"></i>' ?></td>
+                       <td><?= $hotel['vote'] ?>/5</td>
+                       <td><?= $hotel['distance_to_center'] ?> km</td>
                     </tr>
                 <?php endforeach ?>
-            </table>
+        </table>
     </div>
 </main>
+
 
 
 <!-- js bootstrap -->

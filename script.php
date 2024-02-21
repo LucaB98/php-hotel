@@ -42,6 +42,21 @@
 
     $headings = array_keys($hotels[0]);
 
+    // controllo se mi arriva un filtro parcheggio
+    if(isset($_GET['parking'])){
+        $checked = 'checked';
+
+        $filtered_hotels = [];
+
+        foreach($hotels as $hotel){
+            if($hotel['parking']) $filtered_hotels[] = $hotel;
+        }
+        $hotels =  $filtered_hotels;
+    }
+
+   
+    
+
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +83,7 @@
         <form action="" methods="GET">
             <div class="d-flex justify-content-between align-items-center my-3">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox"  id="parking" name="parking">
+                <input class="form-check-input" type="checkbox"  id="parking" name="parking" <?= $checked ?? '' ?>>
                 <label class="form-check-label" for="parking">
                     Mostra solo hotel con parcheggio
                 </label>
@@ -86,7 +101,7 @@
                     <tr>
                        <th scope="col"><?= $hotel['name'] ?></th>
                        <td><?= $hotel['description'] ?></td>
-                       <td><?= $hotel['parking']? '<i class="fa-solid fa-circle-check text-success"></i>' : '<i class="fa-solid fa-circle-xmark text-danger"></i>' ?></td>
+                       <td><?= $icon = $hotel['parking']? '<i class="fa-solid fa-circle-check text-success"></i>' : '<i class="fa-solid fa-circle-xmark text-danger"></i>' ?></td>
                        <td><?= $hotel['vote'] ?>/5</td>
                        <td><?= $hotel['distance_to_center'] ?> km</td>
                     </tr>

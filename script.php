@@ -65,6 +65,17 @@
 <main class="main">
     <div class="container mt-5">
         <h1 class="my-5">Tabella hotel</h1>
+        <form action="" methods="GET">
+            <div class="d-flex justify-content-between align-items-center my-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox"  id="parking" name="parking">
+                <label class="form-check-label" for="parking">
+                    Mostra solo hotel con parcheggio
+                </label>
+            </div>
+                <button type="submit" class="btn btn-sm btn-primary">Filtra</button>
+            </div>
+        </form>
         <table class="table table-striped">
                 <tr>
                 <?php foreach($headings as $heading) : ?>
